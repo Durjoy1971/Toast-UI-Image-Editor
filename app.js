@@ -168,7 +168,9 @@ async function uploadToServer(dataUrl, fileName) {
     const result = { success: true, url: "https://example.com/your-uploaded-image.png" };
     
     if (result.success) {
-      Swal.fire("Success", `Image uploaded! Access it at: ${result.url}`, "success");
+      // Copy dataUrl to clipboard
+      await navigator.clipboard.writeText(dataUrl);
+      Swal.fire("Success", `Image uploaded! Access it at: ${result.url}. Data URL copied to clipboard.`, "success");
     } else {
       Swal.fire("Error", "Failed to upload image", "error");
     }
